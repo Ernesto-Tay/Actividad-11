@@ -20,14 +20,14 @@ while True:
                     else:
                         break
                 except:
-                    print("Ingrese una serie de números enteros")
+                    print("Ingrese números enteros en: NIT, telefono, cantidad de autos")
 
             if auto_cant == 0:
                 pass
             else:
-                autos : {}
+                autos = {}
                 for i in range(auto_cant):
-                    print("-"*5 + f" AUTO {i+1} " + "-*5")
+                    print("-"*5 + f" AUTO {i+1} " + "-"*5)
                     placa = input("Ingrese la placa: ")
                     marca = input("Ingrese la marca: ")
                     modelo = input("Ingrese el modelo: ")
