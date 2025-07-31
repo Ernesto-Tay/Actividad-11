@@ -6,7 +6,7 @@ while True:
         case "1":
             while True:
                 try:
-                    nit = int(input("Ingrese su NIT: "))
+                    nit = int(input("\nIngrese su NIT: "))
                     nombre = input("Ingrese su nombre completo: ")
                     telefono = int(input("Ingrese su telefono: "))
                     auto_cant =int(input("Ingrese la cantidad de autos que posee: "))
@@ -17,9 +17,19 @@ while True:
                     if len(str(nit))!=13:
                         print("El NIT debe tener 13 dígitos")
                         nit_mal = True
+                    elif nit in propietarios:
+                        print("Ya existe otra persona con ese NIT")
+                        nit_mal = True
+
                     if len(str(telefono)) != 8:
                         print("El número de teléfono debe tener 8 dígitos")
                         telefono_mal = True
+                    elif propietarios:
+                        for propietario in propietarios:
+                            if propietario['telefono'] == telefono:
+                                print("Ya existe otra persona con ese número telefóno")
+                                telefono_mal = True
+
                     if auto_cant<0:
                         print("La cantidad de autos debe ser positiva o 0")
                         autitos_mal = True
@@ -35,7 +45,7 @@ while True:
             else:
                 autos = {}
                 for i in range(auto_cant):
-                    print("-"*5 + f" AUTO {i+1} " + "-"*5)
+                    print("\n" + "-"*5 + f" AUTO {i+1} " + "-"*5)
                     placa = input("Ingrese la placa: ")
                     marca = input("Ingrese la marca: ")
                     modelo = input("Ingrese el modelo: ")
@@ -72,14 +82,14 @@ while True:
                 print("No hay propietarios")
             else:
                 for NIT, prop in propietarios.items():
-                    print("\nNIT: " + NIT)
+                    print("\nNIT: " + str(NIT))
                     print("Nombre: " + prop["nombre"])
-                    print("Telefono: " + prop["telefono"])
+                    print("Telefono: " + str(prop["telefono"]))
                     print("Autos:")
                     for placa, auto in prop["autos"].items():
                         print("Placa: " + placa)
                         print("Modelo: " + auto["modelo"])
-                        print("año: " + auto["ano"])
+                        print("año: " + str(auto["ano"]))
                         print("¿Pagó el impuesto?: " + auto["impuesto"])
 
 
