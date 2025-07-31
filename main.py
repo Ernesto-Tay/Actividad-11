@@ -76,7 +76,36 @@ while True:
 
 
         case "3":
-            pass
+            if not propietarios:
+                print("No hay propietarios")
+            else:
+                while True:
+                    nit_search = input("Ingrese el NIT: ")
+                    if nit_search.isdigit():
+                        nit_search = int(nit_search)
+                        if len(str(nit_search))!=13:
+                            print("El NIT debe tener 13 números")
+                        else:
+                            break
+                    else:
+                        print("Ingrese solo números")
+
+                if nit_search in propietarios.keys():
+                    propietario = propietarios[nit_search]
+                    pagado_cant = 0
+                    nopagado_cant = 0
+                    for placa, auto in prop["autos"].items():
+                        if auto["impuesto"] == "si" or auto["impuesto"] == "sí":
+                            pagado_cant += 1
+                        else:
+                            nopagado_cant += 1
+
+                    print(f"Total de vehículos con impuesto pagado: {pagado_cant}")
+                    print(f"Total de vehículos sin impuesto pagado: {nopagado_cant}")
+
+
+
+
         case "4":
             print("Saliendo...")
             break
