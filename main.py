@@ -17,7 +17,7 @@ while True:
                     if len(str(nit))!=13:
                         print("El NIT debe tener 13 dígitos")
                         nit_mal = True
-                    elif nit in propietarios:
+                    elif nit in propietarios.keys():
                         print("Ya existe otra persona con ese NIT")
                         nit_mal = True
 
@@ -25,7 +25,7 @@ while True:
                         print("El número de teléfono debe tener 8 dígitos")
                         telefono_mal = True
                     elif propietarios:
-                        for propietario in propietarios:
+                        for propietario in propietarios.items():
                             if propietario['telefono'] == telefono:
                                 print("Ya existe otra persona con ese número telefóno")
                                 telefono_mal = True
@@ -46,7 +46,17 @@ while True:
                 autos = {}
                 for i in range(auto_cant):
                     print("\n" + "-"*5 + f" AUTO {i+1} " + "-"*5)
-                    placa = input("Ingrese la placa: ")
+                    while True:
+                        placa = input("Ingrese la placa: ")
+                        placa_duplex = False
+                        for propietario in propietarios.items():
+                            for plac in propietario['autos'].keys():
+                                if placa == plac:
+                                    print("Ya hay otro auto con esa placa")
+                                    placa_duplex = True
+                        if not placa_duplex:
+                            break
+
                     marca = input("Ingrese la marca: ")
                     modelo = input("Ingrese el modelo: ")
                     while True:
