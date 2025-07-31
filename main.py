@@ -11,14 +11,22 @@ while True:
                     telefono = int(input("Ingrese su telefono: "))
                     auto_cant =int(input("Ingrese la cantidad de autos que posee: "))
 
+                    nit_mal = False
+                    telefono_mal = False
+                    autitos_mal = False
                     if len(str(nit))!=13:
                         print("El NIT debe tener 13 dígitos")
-                    elif len(str(telefono)) != 8:
+                        nit_mal = True
+                    if len(str(telefono)) != 8:
                         print("El número de teléfono debe tener 8 dígitos")
-                    elif auto_cant<0:
+                        telefono_mal = True
+                    if auto_cant<0:
                         print("La cantidad de autos debe ser positiva o 0")
-                    else:
+                        autitos_mal = True
+
+                    if not nit_mal and not telefono_mal and not autitos_mal:
                         break
+
                 except:
                     print("Ingrese números enteros en: NIT, telefono, cantidad de autos")
 
@@ -102,8 +110,6 @@ while True:
 
                     print(f"Total de vehículos con impuesto pagado: {pagado_cant}")
                     print(f"Total de vehículos sin impuesto pagado: {nopagado_cant}")
-
-
 
 
         case "4":
