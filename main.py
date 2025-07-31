@@ -60,6 +60,19 @@ while True:
 
 
         case "2":
+            if not propietarios:
+                print("No hay propietarios")
+            else:
+                for NIT, prop in propietarios.items():
+                    print("\nNIT: " + NIT)
+                    print("Nombre: " + prop["nombre"])
+                    print("Telefono: " + prop["telefono"])
+                    print("Autos:")
+                    for placa, auto in prop["autos"].items():
+                        print("Placa: " + placa)
+                        print("Modelo: " + auto["modelo"])
+                        print("año: " + auto["ano"])
+                        print("¿Pagó el impuesto?: " + auto["impuesto"])
 
 
         case "3":
