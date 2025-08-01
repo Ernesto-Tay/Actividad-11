@@ -25,7 +25,7 @@ while True:
                         print("El número de teléfono debe tener 8 dígitos")
                         telefono_mal = True
                     elif propietarios:
-                        for propietario in propietarios.items():
+                        for i,propietario in propietarios.items():
                             if propietario['telefono'] == telefono:
                                 print("Ya existe otra persona con ese número telefóno")
                                 telefono_mal = True
@@ -40,16 +40,16 @@ while True:
                 except:
                     print("Ingrese números enteros en: NIT, telefono, cantidad de autos")
 
+            autos = {}
             if auto_cant == 0:
                 pass
             else:
-                autos = {}
                 for i in range(auto_cant):
                     print("\n" + "-"*5 + f" AUTO {i+1} " + "-"*5)
                     while True:
                         placa = input("Ingrese la placa: ")
                         placa_duplex = False
-                        for propietario in propietarios.items():
+                        for i,propietario in propietarios.items():
                             for plac in propietario['autos'].keys():
                                 if placa == plac:
                                     print("Ya hay otro auto con esa placa")
@@ -91,12 +91,12 @@ while True:
             if not propietarios:
                 print("No hay propietarios")
             else:
-                for NIT, prop in propietarios.items():
+                for NIT, propietario in propietarios.items():
                     print("\nNIT: " + str(NIT))
-                    print("Nombre: " + prop["nombre"])
-                    print("Telefono: " + str(prop["telefono"]))
+                    print("Nombre: " + propietario["nombre"])
+                    print("Telefono: " + str(propietario["telefono"]))
                     print("Autos:")
-                    for placa, auto in prop["autos"].items():
+                    for placa, auto in propietario["autos"].items():
                         print("Placa: " + placa)
                         print("Modelo: " + auto["modelo"])
                         print("año: " + str(auto["ano"]))
@@ -122,7 +122,7 @@ while True:
                     propietario = propietarios[nit_search]
                     pagado_cant = 0
                     nopagado_cant = 0
-                    for placa, auto in prop["autos"].items():
+                    for placa, auto in propietario["autos"].items():
                         if auto["impuesto"] == "si" or auto["impuesto"] == "sí":
                             pagado_cant += 1
                         else:
